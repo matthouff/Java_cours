@@ -1,3 +1,5 @@
+package variables;
+
 import java.util.Date;
 
 public class Variables {
