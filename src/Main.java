@@ -1,5 +1,8 @@
+import classSpecial.ClassScanner;
+import classSpecial.ClassSystem;
 import classeEtObjet.Port;
 import classeEtObjet.vehicule.Bateau;
+import classeEtObjet.vehicule.Voiture;
 
 public class Main {
     public static void main(String[] args) {
@@ -26,6 +29,9 @@ public class Main {
             //        StructureIterative_While.iteration();
             //        MotsCle_break_continue.motsCleBreak();
             //        MotsCle_break_continue.motsCleContinue();
+
+            //        ClassSystem.system();
+            //        ClassScanner.scanner();
         }
 
         ////////////////////////////////////// Voitures ///////////////////////////////////////
@@ -97,6 +103,11 @@ public class Main {
         Port port = new Port();
         port.accueilEngin(bateau);
 
+
+        // DÉMONSTRATION DES CLASS CONTENEURS & WRAPPER (Integer, Boolean, Float ...)
+        Voiture clio2 = new Voiture();
+        clio2.rapportCourant = 2;
+        clio2.rapportCourant++; // On peut constater que le fait de na plus passer par le type primitif int mais par Integer n'impacte pas le fonctionnement
 
 
     }

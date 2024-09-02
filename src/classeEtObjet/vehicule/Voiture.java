@@ -18,7 +18,7 @@ public class Voiture extends VehiculeAMoteur implements Vidangeable {
     public byte nbPortes = 5; // 5 == valeur par défaut définie si on ne met rien comme valeur lors de l'appel mais elle pourra être changé
     public boolean automatique; // Un booleen est false par défaut donc pas besoin de le préciser (si on veut mettre false)
     public String couleur; // valeur par défaut d'un String == null
-    public int rapportCourant;
+    public Integer rapportCourant;
 
 
     // Les constructeurs doivent être ordonnées par nombre de paramètres pour une meilleure lisibilité
