@@ -1,6 +1,11 @@
-package classeEtObjet;
+package classeEtObjet.vehicule;
 
-public class Voiture {
+import classeEtObjet.Moteur;
+import classeEtObjet.Passager;
+import classeEtObjet.interfaces.Vidangeable;
+import classeEtObjet.Ville;
+
+public class Voiture extends VehiculeAMoteur implements Vidangeable {
 
     /*
     * "static" permet de faire appel directement à l'attribut ou méthode sans avoir instancié de classe ( ex: Voiture.klaxonner() )
@@ -14,41 +19,31 @@ public class Voiture {
     public boolean automatique; // Un booleen est false par défaut donc pas besoin de le préciser (si on veut mettre false)
     public String couleur; // valeur par défaut d'un String == null
     public int rapportCourant;
-    public int vitesse;
-    public Moteur moteur;
 
 
     // Les constructeurs doivent être ordonnées par nombre de paramètres pour une meilleure lisibilité
     public Voiture() {
-        System.out.println("Une voiture est construite sans paramètres");
     }
+
     public Voiture(String couleur) {
         this.couleur = couleur;
         System.out.println("Une voiture est construite avec des paramètres");
     }
-    public Voiture(Moteur moteur) {
-        this.moteur = moteur;
-    }
+
     public Voiture(String carburant, int nbCylindre) {
         Moteur moteur = new Moteur();
         moteur.carburant = carburant;
         moteur.nbCylindres = nbCylindre;
-        this.moteur = moteur;
     }
     public Voiture(byte nbPortes, boolean automatique, String couleur, int rapportCourant, int vitesse) {
         this.nbPortes = nbPortes;
         this.automatique = automatique;
         this.couleur = couleur;
         this.rapportCourant = rapportCourant;
-        this.vitesse = vitesse;
     }
 
 
     // Toujours mettre les méthodes static en premier pour une meilleure lisibilité
-    public static void klaxonner(){
-        System.out.println("Tutuuuuuuut !!!!!");
-    }
-
     public static void tourner(boolean droiteGauche, int angle){
         String tournerDroiteGauche = droiteGauche ? "droite" : "gauche";
         System.out.printf("La voiture va tourner à %s avec un angle de %d°%n", tournerDroiteGauche, angle);
@@ -57,27 +52,29 @@ public class Voiture {
         System.out.printf("La voiture va tourner à %s avec un angle de %d°%n", droiteGauche, angle);
     }
 
-    public int accelerer(){
-        System.out.println("J'accélère");
-        return 100;
-    }
-
-    public int accelerer(int vitesse){   // Méthode surchargé (copie de méthode avec des paramètres différents)
-        System.out.println("J'accélère");
-        this.vitesse = this.vitesse + vitesse; // Le this. permet de faire référence à l'attribut de l'objet utilisé et non le paramètre
-        return this.vitesse;
-    }
-
     public int passerRapport(boolean augmenter){
         return augmenter ? ++rapportCourant : --rapportCourant;
     }
 
     public Ville transporter(Passager passager, Ville villeDeDepart){
-        System.out.println("Je transporte un passager qui s'appel " + passager.prenom + " " +  passager.nom);
+        System.out.println("La voiture transporte un passager qui s'appel " + passager.prenom + " " +  passager.nom);
         System.out.println("Le passager est parti de la ville de " + villeDeDepart.nom);
 
         Ville villeDeDestination = new Ville();
         villeDeDestination.nom = "Paris";
         return villeDeDestination;
+    }
+
+    // Lorsque l'on implémente une interface on doit obligatoirement appeler ses méthodes grâce à l'Override et lui
+    // donner les instructions qui lui sont propres dans la classe.
+    @Override
+    public void vidanger() {
+        System.out.println("Dévisser le bouchon sous la culasse et attendre que ça coule.");
+    }
+
+    // La méthode klaxonner vient de Vehicule et est passé par VehiculeAMoteur pour arrivé à cette dernière classe fille
+    @Override
+    void klaxonner() {
+        System.out.println("Tut Tuuuuuuuut !!!");
     }
 }
