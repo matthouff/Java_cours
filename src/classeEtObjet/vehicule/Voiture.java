@@ -16,7 +16,7 @@ public class Voiture extends VehiculeAMoteur implements Vidangeable {
     public static int nbRoue = 4; // "static" cela permet d'appeler l'attribut directement avec la classe (Voiture.nbRoue) (mais on peut tout de même changer la valeur après avoir instancié une classe)
 
     public byte nbPortes = 5; // 5 == valeur par défaut définie si on ne met rien comme valeur lors de l'appel mais elle pourra être changé
-    public boolean automatique; // Un booleen est false par défaut donc pas besoin de le préciser (si on veut mettre false)
+    public TypeBoiteVitesse boiteVitesse;
     public String couleur; // valeur par défaut d'un String == null
     public Integer rapportCourant;
 
@@ -35,9 +35,9 @@ public class Voiture extends VehiculeAMoteur implements Vidangeable {
         moteur.carburant = carburant;
         moteur.nbCylindres = nbCylindre;
     }
-    public Voiture(byte nbPortes, boolean automatique, String couleur, int rapportCourant, int vitesse) {
+    public Voiture(byte nbPortes, TypeBoiteVitesse boiteVitesse, String couleur, int rapportCourant, int vitesse) {
         this.nbPortes = nbPortes;
-        this.automatique = automatique;
+        this.boiteVitesse = boiteVitesse;
         this.couleur = couleur;
         this.rapportCourant = rapportCourant;
     }

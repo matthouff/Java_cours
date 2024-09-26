@@ -2,6 +2,7 @@ import classSpecial.ClassScanner;
 import classSpecial.ClassSystem;
 import classeEtObjet.Port;
 import classeEtObjet.vehicule.Bateau;
+import classeEtObjet.vehicule.TypeBoiteVitesse;
 import classeEtObjet.vehicule.Voiture;
 
 public class Main {
@@ -109,6 +110,14 @@ public class Main {
         clio2.rapportCourant = 2;
         clio2.rapportCourant++; // On peut constater que le fait de na plus passer par le type primitif int mais par Integer n'impacte pas le fonctionnement
 
+
+        // CRÉATION D'UN TYPE ENUM POUR DÉFINIR LES TYPES DE BOITE DE VITESSE
+        Voiture clio3 = new Voiture();
+        clio2.boiteVitesse = TypeBoiteVitesse.SEMI_AUTO; // attribution classique d'un énum à une voiture
+        clio3.boiteVitesse = TypeBoiteVitesse.valueOf("MANUELLE"); // Attribution par le nom de l'énumération
+
+        System.out.println("Le type de boite de vitesse de la clio 2 est : " + clio2.boiteVitesse);
+        System.out.println("Le type de boite de vitesse de la clio 3 est : " + clio3.boiteVitesse);
 
     }
 }
